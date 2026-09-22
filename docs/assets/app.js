@@ -106,6 +106,11 @@
       },
       options: {
         responsive: true,
+        // The canvas sizes to its .chart-wrap container's fixed height (see
+        // CSS) instead of a fixed aspect ratio, so the chart stays exactly
+        // as tall on a narrow phone screen as it is on desktop -- only the
+        // width (and tick density) adapts.
+        maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         scales: {
           x: { title: { display: true, text: "Week" } },
@@ -135,6 +140,7 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         scales: {
           x: { title: { display: true, text: "Week" } },
@@ -155,11 +161,11 @@
       <div class="charts">
         <div class="chart-card">
           <h3>Cumulative Wins</h3>
-          <canvas id="cumulative-chart"></canvas>
+          <div class="chart-wrap"><canvas id="cumulative-chart"></canvas></div>
         </div>
         <div class="chart-card">
           <h3>Weekly Wins per Owner</h3>
-          <canvas id="weekly-chart"></canvas>
+          <div class="chart-wrap"><canvas id="weekly-chart"></canvas></div>
         </div>
       </div>
       <footer class="updated">Last updated ${new Date(data.generated_at).toLocaleString()}</footer>

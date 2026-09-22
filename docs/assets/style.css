@@ -149,7 +149,19 @@ header.page-header .sub {
   padding: 16px;
 }
 .chart-card h3 { margin: 0 0 10px 4px; font-size: 1rem; }
-.chart-card canvas { max-height: 340px; }
+
+/* Fixed-height box the chart canvas fills (via Chart.js's
+   maintainAspectRatio: false) instead of a width-driven aspect ratio --
+   this keeps the chart just as tall on a narrow phone as on desktop, so
+   only its width (and tick/legend density) adapts to the screen. */
+.chart-wrap {
+  position: relative;
+  height: 340px;
+}
+.chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
 
 footer.updated {
   margin-top: 24px;
