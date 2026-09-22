@@ -46,8 +46,8 @@ MATCHUPS = [
         "slug": "harry-vs-jamie",
         "owner_left": "Harry",
         "owner_right": "Jamie",
-        "teams_left": ["BUF", "DET", "GB", "TB", "HOU", "NE"],
-        "teams_right": ["BAL", "PHI", "KC", "SF", "MIN", "CIN"],
+        "teams_left": ["DET", "DEN", "SEA", "HOU", "DAL", "JAX", "SF"],
+        "teams_right": ["LAR", "BUF", "BAL", "LAC", "NE", "KC", "PHI"],
     },
 ]
 
