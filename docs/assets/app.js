@@ -168,7 +168,11 @@
     makeWeeklyBarChart(document.getElementById("weekly-chart"), data);
   }
 
-  fetch(src)
+  // Cache-bust: GitHub Pages' CDN caches data.json for ~10 minutes, so without
+  // this, viewers loading the page soon after a Tuesday update could see stale
+  // data until that window expires. The unique query string + no-store forces
+  // a fresh fetch every time, from both the CDN and the browser's own cache.
+  fetch(`${src}?v=${Date.now()}`, { cache: "no-store" })
     .then((r) => r.json())
     .then(render)
     .catch((err) => {
