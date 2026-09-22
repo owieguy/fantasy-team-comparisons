@@ -1,0 +1,38 @@
+name: Update fantasy comparison site
+
+on:
+  schedule:
+    # 08:00 UTC = 3:00 AM US Eastern (EST). During Eastern Daylight Time
+    # (roughly Sept-early Nov), this runs closer to 4:00 AM Eastern instead of 3:00 AM,
+    # because GitHub Actions cron is always UTC and doesn't shift for DST.
+    - cron: "0 8 * * 2"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build site
+        run: python3 scripts/build_site.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || git commit -m "Update fantasy comparison data"
+          git push

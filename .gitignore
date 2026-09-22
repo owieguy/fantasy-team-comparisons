@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Old local-only outputs from the Mail-app era script (not part of the hosted site)
+nfl_team_comparison_*.png
