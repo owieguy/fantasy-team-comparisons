@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import json
 import shutil
+import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from functools import lru_cache
@@ -126,19 +128,39 @@ class Game:
     status: str
 
 
+class EspnFetchError(RuntimeError):
+    """Raised when ESPN's scoreboard API can't be reached/parsed after
+    retries -- distinct from a week legitimately having no games yet, so
+    callers can tell "the fetch failed" from "nothing happened this week"
+    and refuse to publish a page built from a failed fetch."""
+
+
 def http_get_json(url: str) -> dict:
     r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
     r.raise_for_status()
     return r.json()
 
 
-def _fetch_week(season: int, week: int, seasontype: int, logo_map: Dict[str, str]) -> List[Game]:
+def _fetch_week(season: int, week: int, seasontype: int, logo_map: Dict[str, str],
+                 retries: int = 3) -> List[Game]:
     params = {"year": season, "week": week, "seasontype": seasontype}
     url = f"{ESPN_SCOREBOARD}?{urlencode(params)}"
-    try:
-        data = http_get_json(url)
-    except requests.RequestException:
-        return []
+    last_err: Optional[Exception] = None
+    for attempt in range(retries):
+        if attempt:
+            time.sleep(2 ** attempt)  # 2s, 4s, ...
+        try:
+            data = http_get_json(url)
+            break
+        except requests.RequestException as e:
+            last_err = e
+    else:
+        # A network/HTTP failure (e.g. ESPN/Akamai returning 403) must not
+        # be silently treated as "no games this week" -- that previously
+        # let a blocked request wipe real results down to 0-0-0 records,
+        # which then got committed as if it were current data. Surface it
+        # instead so the caller can abort the whole build.
+        raise EspnFetchError(f"Failed to fetch {season} week {week} (seasontype {seasontype}) after {retries} attempts: {last_err}") from last_err
     events = data.get("events") or []
     out: List[Game] = []
     for ev in events:
@@ -196,9 +218,11 @@ def fetch_season_cached(season: int,
         lo, hi = max(1, weeks[0]), min(18, weeks[1])
     for wk in range(lo, hi + 1):
         games.extend(_fetch_week(season, wk, 2, logos))
+        time.sleep(0.2)  # be gentle on ESPN's unofficial API
     if include_postseason:
         for wk in range(1, 6):
             games.extend(_fetch_week(season, wk, 3, logos))
+            time.sleep(0.2)
     return tuple(games), tuple(sorted(logos.items()))
 
 
@@ -463,9 +487,17 @@ def main() -> None:
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "assets").mkdir(parents=True, exist_ok=True)
 
+    # Compute every matchup's data before writing anything -- a fetch
+    # failure partway through must not leave some pages updated and others
+    # stale/inconsistent, and must never overwrite docs/ with data built
+    # from a failed (rather than merely empty) ESPN response.
+    built = []
     for m in MATCHUPS:
-        print(f"Building {m['owner_left']} vs {m['owner_right']}...")
+        print(f"Fetching {m['owner_left']} vs {m['owner_right']}...")
         data = build_matchup_data(m["owner_left"], m["owner_right"], m["teams_left"], m["teams_right"], SEASON)
+        built.append((m, data))
+
+    for m, data in built:
         write_matchup_page(m["slug"], m["owner_left"], m["owner_right"], data)
 
     write_landing_page(MATCHUPS)
@@ -473,4 +505,10 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    try:
+        main()
+    except EspnFetchError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        print("Aborting without writing docs/ -- a failed fetch must not overwrite good data with empty results.", file=sys.stderr)
+        sys.exit(1)
     main()

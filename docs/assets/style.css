@@ -196,6 +196,86 @@ footer.updated {
   font-size: 1.1rem;
 }
 
+/* Mobile-only paired comparison rows (see app.js renderMatchupRows) --
+   hidden on desktop, where the two full team columns are already
+   side-by-side and don't need pairing. */
+.matchup-rows {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
 @media (max-width: 640px) {
+  /* Replace the two full-length stacked team lists with inline paired
+     rows (each owner's Nth-best team side by side with the other's),
+     similar to a fantasy-lineup matchup screen -- keeps both sides
+     visible together per row instead of scrolling through one whole
+     list before reaching the other. The summary card stays, now full
+     width above the rows. */
   .columns { flex-direction: column; }
+  .columns .column { display: none; }
+
+  .matchup-rows { display: flex; }
+
+  .matchup-row {
+    display: flex;
+    align-items: center;
+    background: var(--row-bg);
+    border-radius: 10px;
+    padding: 8px 6px;
+    gap: 4px;
+  }
+
+  .matchup-row .side {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .matchup-row .side-right {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  .matchup-row .side-empty {
+    visibility: hidden;
+  }
+
+  .matchup-row .logo {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .matchup-row .side-info {
+    min-width: 0;
+  }
+  .matchup-row .team-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .matchup-row .record {
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+  }
+  .matchup-row .record .win { color: var(--green); font-weight: 700; }
+  .matchup-row .record .loss { color: var(--red); font-weight: 700; }
+
+  .matchup-row .rank {
+    flex: 0 0 auto;
+    width: 20px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-left: 1px solid var(--panel-border);
+    border-right: 1px solid var(--panel-border);
+    padding: 0 3px;
+  }
 }

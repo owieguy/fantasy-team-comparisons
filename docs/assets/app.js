@@ -49,6 +49,48 @@
       </div>`;
   }
 
+  // Mobile-only inline comparison: pairs each owner's Nth-best team with the
+  // other owner's Nth-best team in a single row (both lists are sorted
+  // best-to-worst by record), similar to a fantasy-lineup matchup screen
+  // showing both sides of each roster slot in one line instead of two full
+  // stacked lists. Shown/hidden via CSS media query, not JS, so it's just
+  // rendered alongside the desktop columns.
+  function sideCell(row, side) {
+    if (!row) return `<div class="side side-${side} side-empty"></div>`;
+    const delta = row.this_week_delta;
+    const winCls = delta === 1 ? "win" : "";
+    const lossCls = delta === -1 ? "loss" : "";
+    const logo = row.logo
+      ? `<img class="logo" src="${escapeHtml(row.logo)}" alt="${escapeHtml(row.team)} logo" loading="lazy" />`
+      : `<div class="logo"></div>`;
+    return `
+      <div class="side side-${side}">
+        ${logo}
+        <div class="side-info">
+          <div class="team-name">${escapeHtml(row.team)}</div>
+          <div class="record">
+            <span class="${winCls}">${row.record.wins}</span>-<span class="${lossCls}">${row.record.losses}</span>-${row.record.ties}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderMatchupRows(data) {
+    const left = data.rows_left;
+    const right = data.rows_right;
+    const n = Math.max(left.length, right.length);
+    const rows = [];
+    for (let i = 0; i < n; i++) {
+      rows.push(`
+        <div class="matchup-row">
+          ${sideCell(left[i], "left")}
+          <div class="rank">${i + 1}</div>
+          ${sideCell(right[i], "right")}
+        </div>`);
+    }
+    return rows.join("");
+  }
+
   function renderColumn(title, rows) {
     return `
       <div class="column">
@@ -158,6 +200,7 @@
         ${renderSummary(data)}
         ${renderColumn(`${data.owner_right}'s Teams`, data.rows_right)}
       </div>
+      <div class="matchup-rows">${renderMatchupRows(data)}</div>
       <div class="charts">
         <div class="chart-card">
           <h3>Cumulative Wins</h3>
