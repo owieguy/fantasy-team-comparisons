@@ -33,6 +33,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: DEBUG ESPN reachability
+        run: |
+          echo "no params:"
+          curl -s -o /dev/null -w "%{http_code}\n" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+          echo "with params:"
+          curl -s -o /dev/null -w "%{http_code}\n" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?year=2026&week=1&seasontype=2"
+          echo "with params + browser UA:"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?year=2026&week=1&seasontype=2"
+          echo "core api, no params:"
+          curl -s -o /dev/null -w "%{http_code}\n" "https://cdn.espn.com/core/nfl/scoreboard?xhr=1"
+
       - name: Build site
         run: python3 scripts/build_site.py
 
