@@ -35,14 +35,15 @@ jobs:
 
       - name: DEBUG ESPN reachability
         run: |
-          echo "no params:"
-          curl -s -o /dev/null -w "%{http_code}\n" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
-          echo "with params:"
-          curl -s -o /dev/null -w "%{http_code}\n" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?year=2026&week=1&seasontype=2"
-          echo "with params + browser UA:"
-          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?year=2026&week=1&seasontype=2"
-          echo "core api, no params:"
-          curl -s -o /dev/null -w "%{http_code}\n" "https://cdn.espn.com/core/nfl/scoreboard?xhr=1"
+          URL="https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?year=2026&week=1&seasontype=2"
+          echo "curl default UA:"
+          curl -s -o /dev/null -w "%{http_code}\n" "$URL"
+          echo "fake short UA 'Mozilla/5.0' (our current code):"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0" "$URL"
+          echo "python-requests style UA:"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "python-requests/2.32.3" "$URL"
+          echo "full realistic Chrome UA:"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "$URL"
 
       - name: Build site
         run: python3 scripts/build_site.py
