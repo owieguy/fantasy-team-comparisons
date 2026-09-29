@@ -136,7 +136,11 @@ class EspnFetchError(RuntimeError):
 
 
 def http_get_json(url: str) -> dict:
-    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
+    # Deliberately NOT a browser-style "Mozilla/..." User-Agent: ESPN's Akamai
+    # bot-mitigation 403s exactly that (a UA claiming to be a browser without
+    # the rest of a real browser's fingerprint), but passes requests' own
+    # honest default UA (confirmed by isolating this in CI -- see git log).
+    r = requests.get(url, timeout=20)
     r.raise_for_status()
     return r.json()
 
