@@ -33,20 +33,33 @@ manually running a script and emailing a PNG.
 ## Automatic weekly updates
 
 `.github/workflows/update.yml` is already wired up to run every **Tuesday at
-3:00 AM US Eastern** (`08:00 UTC`) using GitHub's own free, built-in scheduler
-— no separate cron service or account needed. It:
+~3:13 AM US Eastern** (`08:13 UTC`, plus a backup run at `14:41 UTC`) using
+GitHub's own free, built-in scheduler — no separate cron service or account
+needed. It:
 
 1. Runs `scripts/build_site.py` to pull fresh scores from ESPN.
 2. Commits the updated `docs/*/data.json` files back to `main` if anything
    changed.
 3. GitHub Pages picks up the new commit and the site updates automatically.
 
+**Why not exactly 3:00 / 8:00?** The very first scheduled run (the Tuesday
+after this was set up) never fired at all — GitHub's own docs warn that
+schedules set to the top of the hour (minute `0`) are the most congested and
+most likely to be delayed or silently dropped, since huge numbers of other
+repos also pick round numbers. The cron is now offset to minute 13/41 to
+avoid that, and there's a same-day backup run ~6.5 hours later in case a run
+is ever skipped again (it's a no-op if the primary run already succeeded —
+nothing new to commit). If you ever notice the site didn't update on a
+Tuesday, check the repo's **Actions** tab for run history before assuming
+the code is broken.
+
 **DST caveat:** GitHub Actions cron is always UTC and doesn't shift for
-daylight saving. `08:00 UTC` is exactly 3:00 AM Eastern during EST
-(roughly early Nov–early Mar) but drifts to about 4:00 AM Eastern during EDT
+daylight saving. `08:13 UTC` is ~3:13 AM Eastern during EST
+(roughly early Nov–early Mar) but drifts to about 4:13 AM Eastern during EDT
 (roughly Sept–early Nov). If you're not in US Eastern time, or want a
-different hour, edit the `cron:` line in `.github/workflows/update.yml`
-(use https://crontab.guru to compute the UTC value for your local 3 AM).
+different hour, edit the `cron:` lines in `.github/workflows/update.yml`
+(use https://crontab.guru to compute the UTC value for your local time —
+just avoid minute `0`).
 
 You can also trigger a run manually anytime from the repo's **Actions** tab →
 "Update fantasy comparison site" → "Run workflow".

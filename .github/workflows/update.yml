@@ -2,10 +2,17 @@ name: Update fantasy comparison site
 
 on:
   schedule:
-    # 08:00 UTC = 3:00 AM US Eastern (EST). During Eastern Daylight Time
-    # (roughly Sept-early Nov), this runs closer to 4:00 AM Eastern instead of 3:00 AM,
-    # because GitHub Actions cron is always UTC and doesn't shift for DST.
-    - cron: "0 8 * * 2"
+    # 08:13 UTC = ~3:13 AM US Eastern (EST) / ~4:13 AM Eastern during EDT
+    # (roughly Sept-early Nov), since GitHub Actions cron is always UTC and
+    # doesn't shift for DST. Deliberately NOT minute 0: GitHub's own docs
+    # warn that top-of-the-hour schedules are the most congested and most
+    # likely to be delayed or silently dropped -- which is what happened
+    # the first week this ran on "0 8 * * 2".
+    - cron: "13 8 * * 2"
+    # Backup run ~6.5 hours later, same Tuesday, in case the run above is
+    # ever skipped again. This step is a no-op (no commit) if the primary
+    # run already succeeded, since there's nothing new to fetch/commit.
+    - cron: "41 14 * * 2"
   workflow_dispatch: {}
 
 permissions:
