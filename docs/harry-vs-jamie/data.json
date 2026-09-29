@@ -1,56 +1,27 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-22T18:52:47.226170+00:00",
-  "display_week": 2,
+  "generated_at": "2026-09-29T12:01:51.134966+00:00",
+  "display_week": 3,
   "owner_left": "Harry",
   "owner_right": "Jamie",
   "totals_left": {
-    "wins": 8,
-    "losses": 6,
+    "wins": 12,
+    "losses": 9,
     "ties": 0,
     "pct": 0.571
   },
   "totals_right": {
-    "wins": 9,
-    "losses": 5,
+    "wins": 12,
+    "losses": 9,
     "ties": 0,
-    "pct": 0.643
+    "pct": 0.571
   },
   "rows_left": [
-    {
-      "team": "SEA",
-      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png",
-      "record": {
-        "wins": 2,
-        "losses": 0,
-        "ties": 0,
-        "pct": 1.0
-      },
-      "this_week_delta": 1,
-      "game_log": [
-        {
-          "week": 1,
-          "opponent": "NE",
-          "home": true,
-          "team_score": 13,
-          "opp_score": 10,
-          "result": "W"
-        },
-        {
-          "week": 2,
-          "opponent": "ARI",
-          "home": false,
-          "team_score": 31,
-          "opp_score": 7,
-          "result": "W"
-        }
-      ]
-    },
     {
       "team": "SF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
       "record": {
-        "wins": 2,
+        "wins": 3,
         "losses": 0,
         "ties": 0,
         "pct": 1.0
@@ -72,34 +43,13 @@
           "team_score": 35,
           "opp_score": 13,
           "result": "W"
-        }
-      ]
-    },
-    {
-      "team": "DAL",
-      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png",
-      "record": {
-        "wins": 1,
-        "losses": 1,
-        "ties": 0,
-        "pct": 0.5
-      },
-      "this_week_delta": 1,
-      "game_log": [
-        {
-          "week": 1,
-          "opponent": "NYG",
-          "home": false,
-          "team_score": 20,
-          "opp_score": 28,
-          "result": "L"
         },
         {
-          "week": 2,
-          "opponent": "WAS",
+          "week": 3,
+          "opponent": "ARI",
           "home": true,
-          "team_score": 37,
-          "opp_score": 20,
+          "team_score": 36,
+          "opp_score": 30,
           "result": "W"
         }
       ]
@@ -108,10 +58,10 @@
       "team": "DEN",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
       "record": {
-        "wins": 1,
+        "wins": 2,
         "losses": 1,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.667
       },
       "this_week_delta": 1,
       "game_log": [
@@ -130,6 +80,14 @@
           "team_score": 20,
           "opp_score": 13,
           "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "LAR",
+          "home": true,
+          "team_score": 30,
+          "opp_score": 26,
+          "result": "W"
         }
       ]
     },
@@ -137,12 +95,12 @@
       "team": "DET",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
       "record": {
-        "wins": 1,
+        "wins": 2,
         "losses": 1,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.667
       },
-      "this_week_delta": -1,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -159,6 +117,14 @@
           "team_score": 31,
           "opp_score": 41,
           "result": "L"
+        },
+        {
+          "week": 3,
+          "opponent": "NYJ",
+          "home": true,
+          "team_score": 31,
+          "opp_score": 24,
+          "result": "W"
         }
       ]
     },
@@ -166,12 +132,12 @@
       "team": "JAX",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
       "record": {
-        "wins": 1,
+        "wins": 2,
         "losses": 1,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.667
       },
-      "this_week_delta": -1,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -188,6 +154,88 @@
           "team_score": 13,
           "opp_score": 20,
           "result": "L"
+        },
+        {
+          "week": 3,
+          "opponent": "NE",
+          "home": true,
+          "team_score": 35,
+          "opp_score": 6,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "SEA",
+      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png",
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "pct": 0.667
+      },
+      "this_week_delta": -1,
+      "game_log": [
+        {
+          "week": 1,
+          "opponent": "NE",
+          "home": true,
+          "team_score": 13,
+          "opp_score": 10,
+          "result": "W"
+        },
+        {
+          "week": 2,
+          "opponent": "ARI",
+          "home": false,
+          "team_score": 31,
+          "opp_score": 7,
+          "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "WAS",
+          "home": false,
+          "team_score": 31,
+          "opp_score": 33,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "DAL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png",
+      "record": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "pct": 0.333
+      },
+      "this_week_delta": -1,
+      "game_log": [
+        {
+          "week": 1,
+          "opponent": "NYG",
+          "home": false,
+          "team_score": 20,
+          "opp_score": 28,
+          "result": "L"
+        },
+        {
+          "week": 2,
+          "opponent": "WAS",
+          "home": true,
+          "team_score": 37,
+          "opp_score": 20,
+          "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "BAL",
+          "home": true,
+          "team_score": 31,
+          "opp_score": 34,
+          "result": "L"
         }
       ]
     },
@@ -196,7 +244,7 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png",
       "record": {
         "wins": 0,
-        "losses": 2,
+        "losses": 3,
         "ties": 0,
         "pct": 0.0
       },
@@ -217,6 +265,14 @@
           "team_score": 6,
           "opp_score": 20,
           "result": "L"
+        },
+        {
+          "week": 3,
+          "opponent": "IND",
+          "home": false,
+          "team_score": 17,
+          "opp_score": 19,
+          "result": "L"
         }
       ]
     }
@@ -226,7 +282,7 @@
       "team": "BUF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
       "record": {
-        "wins": 2,
+        "wins": 3,
         "losses": 0,
         "ties": 0,
         "pct": 1.0
@@ -248,6 +304,14 @@
           "team_score": 41,
           "opp_score": 31,
           "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "LAC",
+          "home": true,
+          "team_score": 24,
+          "opp_score": 16,
+          "result": "W"
         }
       ]
     },
@@ -255,7 +319,7 @@
       "team": "KC",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png",
       "record": {
-        "wins": 2,
+        "wins": 3,
         "losses": 0,
         "ties": 0,
         "pct": 1.0
@@ -277,34 +341,13 @@
           "team_score": 33,
           "opp_score": 30,
           "result": "W"
-        }
-      ]
-    },
-    {
-      "team": "PHI",
-      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png",
-      "record": {
-        "wins": 2,
-        "losses": 0,
-        "ties": 0,
-        "pct": 1.0
-      },
-      "this_week_delta": 1,
-      "game_log": [
-        {
-          "week": 1,
-          "opponent": "WAS",
-          "home": true,
-          "team_score": 24,
-          "opp_score": 22,
-          "result": "W"
         },
         {
-          "week": 2,
-          "opponent": "TEN",
+          "week": 3,
+          "opponent": "MIA",
           "home": false,
           "team_score": 24,
-          "opp_score": 20,
+          "opp_score": 10,
           "result": "W"
         }
       ]
@@ -313,12 +356,12 @@
       "team": "BAL",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
       "record": {
-        "wins": 1,
+        "wins": 2,
         "losses": 1,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.667
       },
-      "this_week_delta": -1,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -335,6 +378,51 @@
           "team_score": 17,
           "opp_score": 24,
           "result": "L"
+        },
+        {
+          "week": 3,
+          "opponent": "DAL",
+          "home": false,
+          "team_score": 34,
+          "opp_score": 31,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "PHI",
+      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png",
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "pct": 0.667
+      },
+      "this_week_delta": -1,
+      "game_log": [
+        {
+          "week": 1,
+          "opponent": "WAS",
+          "home": true,
+          "team_score": 24,
+          "opp_score": 22,
+          "result": "W"
+        },
+        {
+          "week": 2,
+          "opponent": "TEN",
+          "home": false,
+          "team_score": 24,
+          "opp_score": 20,
+          "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "CHI",
+          "home": false,
+          "team_score": 7,
+          "opp_score": 27,
+          "result": "L"
         }
       ]
     },
@@ -343,11 +431,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
       "record": {
         "wins": 1,
-        "losses": 1,
+        "losses": 2,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.333
       },
-      "this_week_delta": 1,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -364,6 +452,14 @@
           "team_score": 28,
           "opp_score": 6,
           "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "DEN",
+          "home": false,
+          "team_score": 26,
+          "opp_score": 30,
+          "result": "L"
         }
       ]
     },
@@ -372,11 +468,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png",
       "record": {
         "wins": 1,
-        "losses": 1,
+        "losses": 2,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.333
       },
-      "this_week_delta": 1,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -393,6 +489,14 @@
           "team_score": 20,
           "opp_score": 3,
           "result": "W"
+        },
+        {
+          "week": 3,
+          "opponent": "JAX",
+          "home": false,
+          "team_score": 6,
+          "opp_score": 35,
+          "result": "L"
         }
       ]
     },
@@ -401,7 +505,7 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png",
       "record": {
         "wins": 0,
-        "losses": 2,
+        "losses": 3,
         "ties": 0,
         "pct": 0.0
       },
@@ -422,28 +526,41 @@
           "team_score": 14,
           "opp_score": 26,
           "result": "L"
+        },
+        {
+          "week": 3,
+          "opponent": "BUF",
+          "home": false,
+          "team_score": 16,
+          "opp_score": 24,
+          "result": "L"
         }
       ]
     }
   ],
   "weeks": [
     1,
-    2
+    2,
+    3
   ],
   "weekly_counts_left": [
+    4,
     4,
     4
   ],
   "weekly_counts_right": [
     4,
-    5
+    5,
+    3
   ],
   "cumulative_left": [
     4,
-    8
+    8,
+    12
   ],
   "cumulative_right": [
     4,
-    9
+    9,
+    12
   ]
 }

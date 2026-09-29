@@ -16,7 +16,6 @@ Edit MATCHUPS below whenever rosters change (new draft, trade, etc).
 from __future__ import annotations
 
 import json
-import shutil
 import sys
 import time
 from dataclasses import dataclass
@@ -115,6 +114,7 @@ def normalize_group(raw_list: Iterable[str]) -> List[str]:
 # --------------------------
 
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+REQUEST_DELAY = 0.75  # seconds between per-week requests, to be gentle on ESPN's unofficial API
 
 
 @dataclass
@@ -142,13 +142,13 @@ def http_get_json(url: str) -> dict:
 
 
 def _fetch_week(season: int, week: int, seasontype: int, logo_map: Dict[str, str],
-                 retries: int = 3) -> List[Game]:
+                 retries: int = 4) -> List[Game]:
     params = {"year": season, "week": week, "seasontype": seasontype}
     url = f"{ESPN_SCOREBOARD}?{urlencode(params)}"
     last_err: Optional[Exception] = None
     for attempt in range(retries):
         if attempt:
-            time.sleep(2 ** attempt)  # 2s, 4s, ...
+            time.sleep(2 ** (attempt + 1))  # 4s, 8s, 16s, ...
         try:
             data = http_get_json(url)
             break
@@ -206,31 +206,36 @@ def _fetch_week(season: int, week: int, seasontype: int, logo_map: Dict[str, str
     return out
 
 
-@lru_cache(maxsize=64)
-def fetch_season_cached(season: int,
-                        weeks: Optional[Tuple[int, int]],
-                        include_postseason: bool) -> Tuple[Tuple[Game, ...], Tuple[Tuple[str, str], ...]]:
+@lru_cache(maxsize=8)
+def fetch_regular_season_to_date(season: int) -> Tuple[Tuple[Game, ...], Tuple[Tuple[str, str], ...], Optional[int]]:
+    """
+    Fetch regular-season weeks 1..N in order, stopping as soon as a week is
+    reached that hasn't started yet (every game still STATUS_SCHEDULED).
+
+    This replaces two separate full-season scans (one to detect the current
+    week, one to fetch its games) with a single pass that stops early
+    instead of always walking all 18 weeks -- far fewer requests to ESPN's
+    unofficial API per run, which matters because a burst of ~20 rapid
+    requests is exactly the kind of pattern bot-mitigation (Akamai, in
+    ESPN's case) tends to flag and 403.
+    """
     games: List[Game] = []
     logos: Dict[str, str] = {}
+    last_completed: Optional[int] = None
 
-    lo, hi = (1, 18)
-    if weeks:
-        lo, hi = max(1, weeks[0]), min(18, weeks[1])
-    for wk in range(lo, hi + 1):
-        games.extend(_fetch_week(season, wk, 2, logos))
-        time.sleep(0.2)  # be gentle on ESPN's unofficial API
-    if include_postseason:
-        for wk in range(1, 6):
-            games.extend(_fetch_week(season, wk, 3, logos))
-            time.sleep(0.2)
-    return tuple(games), tuple(sorted(logos.items()))
+    for wk in range(1, 19):
+        week_games = _fetch_week(season, wk, 2, logos)
+        if not week_games:
+            break  # no schedule published for this week yet -> nothing beyond it has happened
+        games.extend(week_games)
+        statuses = {str(g.status).upper() for g in week_games}
+        if any(s.endswith("FINAL") for s in statuses):
+            last_completed = wk
+        if statuses <= {"STATUS_SCHEDULED", ""}:
+            break  # this whole week is still in the future
+        time.sleep(REQUEST_DELAY)
 
-
-@lru_cache(maxsize=32)
-def detect_last_completed_week_cached(season: int) -> Optional[int]:
-    games_t, _ = fetch_season_cached(season, None, False)
-    finals = [g.week for g in games_t if g.seasontype == 2 and str(g.status).upper().endswith("FINAL")]
-    return max(finals) if finals else None
+    return tuple(games), tuple(sorted(logos.items())), last_completed
 
 
 # --------------------------
@@ -373,14 +378,8 @@ def build_matchup_data(owner_left: str, owner_right: str, teams_left: List[str],
     if not left or not right:
         raise ValueError(f"Unrecognized teams for {owner_left} vs {owner_right}")
 
-    last_week = detect_last_completed_week_cached(season)
-    if last_week is not None:
-        week_span = (1, last_week)
-        games_t, logos_t = fetch_season_cached(season, week_span, False)
-        display_week = last_week
-    else:
-        games_t, logos_t = fetch_season_cached(season, None, False)
-        display_week = None
+    games_t, logos_t, last_week = fetch_regular_season_to_date(season)
+    display_week = last_week
 
     games = list(games_t)
     logos = dict(logos_t)
@@ -511,4 +510,3 @@ if __name__ == "__main__":
         print(f"ERROR: {e}", file=sys.stderr)
         print("Aborting without writing docs/ -- a failed fetch must not overwrite good data with empty results.", file=sys.stderr)
         sys.exit(1)
-    main()
