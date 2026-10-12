@@ -7,12 +7,15 @@ on:
     # doesn't shift for DST. Deliberately NOT minute 0: GitHub's own docs
     # warn that top-of-the-hour schedules are the most congested and most
     # likely to be delayed or silently dropped -- which is what happened
-    # the first week this ran on "0 8 * * 2".
-    - cron: "13 8 * * 2"
-    # Backup run ~6.5 hours later, same Tuesday, in case the run above is
-    # ever skipped again. This step is a no-op (no commit) if the primary
-    # run already succeeded, since there's nothing new to fetch/commit.
-    - cron: "41 14 * * 2"
+    # the first week this ran on "0 8 * * 2". In practice even this has
+    # been delayed by several hours some weeks (GitHub's schedule trigger
+    # is documented as best-effort), so each day below also gets a
+    # same-day backup run -- a no-op if the primary already succeeded,
+    # since there'd be nothing new to commit.
+    - cron: "13 8 * * 1"   # Monday ~3:13 AM Eastern
+    - cron: "41 14 * * 1"  # Monday backup, ~6.5h later
+    - cron: "13 8 * * 2"   # Tuesday ~3:13 AM Eastern
+    - cron: "41 14 * * 2"  # Tuesday backup, ~6.5h later
   workflow_dispatch: {}
 
 permissions:
