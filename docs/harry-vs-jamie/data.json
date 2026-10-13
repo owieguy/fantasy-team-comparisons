@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-12T15:42:14.907912+00:00",
+  "generated_at": "2026-10-13T15:55:11.304506+00:00",
   "display_week": 5,
   "owner_left": "Harry",
   "owner_right": "Jamie",
@@ -11,10 +11,10 @@
     "pct": 0.6
   },
   "totals_right": {
-    "wins": 18,
-    "losses": 14,
+    "wins": 19,
+    "losses": 15,
     "ties": 0,
-    "pct": 0.562
+    "pct": 0.559
   },
   "rows_left": [
     {
@@ -492,12 +492,12 @@
       "team": "BUF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
       "record": {
-        "wins": 3,
+        "wins": 4,
         "losses": 1,
         "ties": 0,
-        "pct": 0.75
+        "pct": 0.8
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -530,6 +530,14 @@
           "team_score": 26,
           "opp_score": 29,
           "result": "L"
+        },
+        {
+          "week": 5,
+          "opponent": "LAR",
+          "home": false,
+          "team_score": 37,
+          "opp_score": 34,
+          "result": "W"
         }
       ]
     },
@@ -591,11 +599,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
       "record": {
         "wins": 2,
-        "losses": 2,
+        "losses": 3,
         "ties": 0,
-        "pct": 0.5
+        "pct": 0.4
       },
-      "this_week_delta": null,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -628,6 +636,14 @@
           "team_score": 24,
           "opp_score": 20,
           "result": "W"
+        },
+        {
+          "week": 5,
+          "opponent": "BUF",
+          "home": true,
+          "team_score": 34,
+          "opp_score": 37,
+          "result": "L"
         }
       ]
     },
@@ -757,7 +773,7 @@
     5,
     3,
     4,
-    2
+    3
   ],
   "cumulative_left": [
     4,
@@ -771,6 +787,6 @@
     9,
     12,
     16,
-    18
+    19
   ]
 }
