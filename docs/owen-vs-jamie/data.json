@@ -1,14 +1,14 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-19T20:11:27.901648+00:00",
+  "generated_at": "2026-10-20T13:32:28.393103+00:00",
   "display_week": 6,
   "owner_left": "Owen",
   "owner_right": "Jamie",
   "totals_left": {
-    "wins": 21,
+    "wins": 22,
     "losses": 19,
     "ties": 0,
-    "pct": 0.525
+    "pct": 0.537
   },
   "totals_right": {
     "wins": 22,
@@ -21,12 +21,12 @@
       "team": "SF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
       "record": {
-        "wins": 5,
+        "wins": 6,
         "losses": 0,
         "ties": 0,
         "pct": 1.0
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -66,6 +66,14 @@
           "home": false,
           "team_score": 32,
           "opp_score": 29,
+          "result": "W"
+        },
+        {
+          "week": 6,
+          "opponent": "WAS",
+          "home": true,
+          "team_score": 23,
+          "opp_score": 17,
           "result": "W"
         }
       ]
@@ -864,7 +872,7 @@
     2,
     4,
     4,
-    1
+    2
   ],
   "weekly_counts_right": [
     3,
@@ -880,7 +888,7 @@
     12,
     16,
     20,
-    21
+    22
   ],
   "cumulative_right": [
     3,
