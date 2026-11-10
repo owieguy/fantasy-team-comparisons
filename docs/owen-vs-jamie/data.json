@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-09T23:33:44.582988+00:00",
+  "generated_at": "2026-11-10T16:23:30.328397+00:00",
   "display_week": 9,
   "owner_left": "Owen",
   "owner_right": "Jamie",
@@ -11,10 +11,10 @@
     "pct": 0.483
   },
   "totals_right": {
-    "wins": 37,
+    "wins": 38,
     "losses": 21,
     "ties": 0,
-    "pct": 0.638
+    "pct": 0.644
   },
   "rows_left": [
     {
@@ -594,12 +594,12 @@
       "team": "BUF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
       "record": {
-        "wins": 6,
+        "wins": 7,
         "losses": 1,
         "ties": 0,
-        "pct": 0.857
+        "pct": 0.875
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -655,6 +655,14 @@
           "home": true,
           "team_score": 36,
           "opp_score": 10,
+          "result": "W"
+        },
+        {
+          "week": 9,
+          "opponent": "MIN",
+          "home": false,
+          "team_score": 23,
+          "opp_score": 6,
           "result": "W"
         }
       ]
@@ -1177,7 +1185,7 @@
     3,
     4,
     5,
-    6
+    7
   ],
   "cumulative_left": [
     5,
@@ -1199,6 +1207,6 @@
     22,
     26,
     31,
-    37
+    38
   ]
 }
