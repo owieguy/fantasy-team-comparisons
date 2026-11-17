@@ -1,12 +1,12 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-16T23:29:58.204947+00:00",
+  "generated_at": "2026-11-17T17:35:50.153603+00:00",
   "display_week": 10,
   "owner_left": "Owen",
   "owner_right": "Jamie",
   "totals_left": {
-    "wins": 32,
-    "losses": 32,
+    "wins": 33,
+    "losses": 33,
     "ties": 0,
     "pct": 0.5
   },
@@ -378,11 +378,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
       "record": {
         "wins": 4,
-        "losses": 5,
+        "losses": 6,
         "ties": 0,
-        "pct": 0.444
+        "pct": 0.4
       },
-      "this_week_delta": null,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -454,6 +454,14 @@
           "home": true,
           "team_score": 10,
           "opp_score": 33,
+          "result": "L"
+        },
+        {
+          "week": 10,
+          "opponent": "LAC",
+          "home": true,
+          "team_score": 20,
+          "opp_score": 23,
           "result": "L"
         }
       ]
@@ -547,12 +555,12 @@
       "team": "LAC",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png",
       "record": {
-        "wins": 0,
+        "wins": 1,
         "losses": 8,
         "ties": 0,
-        "pct": 0.0
+        "pct": 0.111
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -617,6 +625,14 @@
           "team_score": 22,
           "opp_score": 44,
           "result": "L"
+        },
+        {
+          "week": 10,
+          "opponent": "BAL",
+          "home": false,
+          "team_score": 23,
+          "opp_score": 20,
+          "result": "W"
         }
       ]
     }
@@ -1256,7 +1272,7 @@
     2,
     2,
     3,
-    3
+    4
   ],
   "weekly_counts_right": [
     3,
@@ -1280,7 +1296,7 @@
     24,
     26,
     29,
-    32
+    33
   ],
   "cumulative_right": [
     3,
