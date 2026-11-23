@@ -1,30 +1,30 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-17T22:38:17.427657+00:00",
-  "display_week": 10,
+  "generated_at": "2026-11-23T20:07:02.309917+00:00",
+  "display_week": 11,
   "owner_left": "Harry",
   "owner_right": "Jamie",
   "totals_left": {
-    "wins": 42,
-    "losses": 23,
+    "wins": 47,
+    "losses": 24,
     "ties": 0,
-    "pct": 0.646
+    "pct": 0.662
   },
   "totals_right": {
-    "wins": 33,
-    "losses": 33,
+    "wins": 36,
+    "losses": 35,
     "ties": 0,
-    "pct": 0.5
+    "pct": 0.507
   },
   "rows_left": [
     {
       "team": "SF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
       "record": {
-        "wins": 8,
+        "wins": 9,
         "losses": 1,
         "ties": 0,
-        "pct": 0.889
+        "pct": 0.9
       },
       "this_week_delta": 1,
       "game_log": [
@@ -99,6 +99,14 @@
           "team_score": 46,
           "opp_score": 40,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "MIN",
+          "home": true,
+          "team_score": 35,
+          "opp_score": 10,
+          "result": "W"
         }
       ]
     },
@@ -106,12 +114,12 @@
       "team": "DEN",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
       "record": {
-        "wins": 7,
+        "wins": 8,
         "losses": 2,
         "ties": 0,
-        "pct": 0.778
+        "pct": 0.8
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -184,6 +192,14 @@
           "team_score": 26,
           "opp_score": 21,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "LV",
+          "home": true,
+          "team_score": 38,
+          "opp_score": 24,
+          "result": "W"
         }
       ]
     },
@@ -191,10 +207,10 @@
       "team": "DET",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
       "record": {
-        "wins": 7,
+        "wins": 8,
         "losses": 2,
         "ties": 0,
-        "pct": 0.778
+        "pct": 0.8
       },
       "this_week_delta": 1,
       "game_log": [
@@ -269,6 +285,14 @@
           "team_score": 35,
           "opp_score": 10,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "TB",
+          "home": true,
+          "team_score": 31,
+          "opp_score": 21,
+          "result": "W"
         }
       ]
     },
@@ -277,11 +301,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
       "record": {
         "wins": 7,
-        "losses": 2,
+        "losses": 3,
         "ties": 0,
-        "pct": 0.778
+        "pct": 0.7
       },
-      "this_week_delta": 1,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -354,6 +378,14 @@
           "team_score": 40,
           "opp_score": 23,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "NYG",
+          "home": false,
+          "team_score": 18,
+          "opp_score": 23,
+          "result": "L"
         }
       ]
     },
@@ -366,7 +398,7 @@
         "ties": 0,
         "pct": 0.6
       },
-      "this_week_delta": 1,
+      "this_week_delta": null,
       "game_log": [
         {
           "week": 1,
@@ -454,12 +486,12 @@
       "team": "DAL",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png",
       "record": {
-        "wins": 4,
+        "wins": 5,
         "losses": 6,
         "ties": 0,
-        "pct": 0.4
+        "pct": 0.455
       },
-      "this_week_delta": -1,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -540,6 +572,14 @@
           "team_score": 40,
           "opp_score": 46,
           "result": "L"
+        },
+        {
+          "week": 11,
+          "opponent": "TEN",
+          "home": true,
+          "team_score": 51,
+          "opp_score": 30,
+          "result": "W"
         }
       ]
     },
@@ -547,12 +587,12 @@
       "team": "HOU",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png",
       "record": {
-        "wins": 3,
+        "wins": 4,
         "losses": 6,
         "ties": 0,
-        "pct": 0.333
+        "pct": 0.4
       },
-      "this_week_delta": -1,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -625,6 +665,14 @@
           "team_score": 24,
           "opp_score": 27,
           "result": "L"
+        },
+        {
+          "week": 11,
+          "opponent": "IND",
+          "home": true,
+          "team_score": 26,
+          "opp_score": 3,
+          "result": "W"
         }
       ]
     }
@@ -634,10 +682,10 @@
       "team": "BUF",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
       "record": {
-        "wins": 8,
+        "wins": 9,
         "losses": 1,
         "ties": 0,
-        "pct": 0.889
+        "pct": 0.9
       },
       "this_week_delta": 1,
       "game_log": [
@@ -712,6 +760,14 @@
           "team_score": 31,
           "opp_score": 12,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "MIA",
+          "home": true,
+          "team_score": 26,
+          "opp_score": 9,
+          "result": "W"
         }
       ]
     },
@@ -719,10 +775,10 @@
       "team": "KC",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png",
       "record": {
-        "wins": 7,
+        "wins": 8,
         "losses": 2,
         "ties": 0,
-        "pct": 0.778
+        "pct": 0.8
       },
       "this_week_delta": 1,
       "game_log": [
@@ -797,6 +853,14 @@
           "team_score": 35,
           "opp_score": 13,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "ARI",
+          "home": true,
+          "team_score": 34,
+          "opp_score": 7,
+          "result": "W"
         }
       ]
     },
@@ -809,7 +873,7 @@
         "ties": 0,
         "pct": 0.6
       },
-      "this_week_delta": 1,
+      "this_week_delta": null,
       "game_log": [
         {
           "week": 1,
@@ -902,7 +966,7 @@
         "ties": 0,
         "pct": 0.5
       },
-      "this_week_delta": -1,
+      "this_week_delta": null,
       "game_log": [
         {
           "week": 1,
@@ -991,9 +1055,9 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
       "record": {
         "wins": 4,
-        "losses": 6,
+        "losses": 7,
         "ties": 0,
-        "pct": 0.4
+        "pct": 0.364
       },
       "this_week_delta": -1,
       "game_log": [
@@ -1076,6 +1140,14 @@
           "team_score": 20,
           "opp_score": 23,
           "result": "L"
+        },
+        {
+          "week": 11,
+          "opponent": "CAR",
+          "home": false,
+          "team_score": 33,
+          "opp_score": 35,
+          "result": "L"
         }
       ]
     },
@@ -1083,12 +1155,12 @@
       "team": "PHI",
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png",
       "record": {
-        "wins": 2,
+        "wins": 3,
         "losses": 7,
         "ties": 0,
-        "pct": 0.222
+        "pct": 0.3
       },
-      "this_week_delta": null,
+      "this_week_delta": 1,
       "game_log": [
         {
           "week": 1,
@@ -1161,6 +1233,14 @@
           "team_score": 11,
           "opp_score": 19,
           "result": "L"
+        },
+        {
+          "week": 11,
+          "opponent": "PIT",
+          "home": true,
+          "team_score": 19,
+          "opp_score": 16,
+          "result": "W"
         }
       ]
     },
@@ -1169,11 +1249,11 @@
       "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png",
       "record": {
         "wins": 1,
-        "losses": 8,
+        "losses": 9,
         "ties": 0,
-        "pct": 0.111
+        "pct": 0.1
       },
-      "this_week_delta": 1,
+      "this_week_delta": -1,
       "game_log": [
         {
           "week": 1,
@@ -1246,6 +1326,14 @@
           "team_score": 23,
           "opp_score": 20,
           "result": "W"
+        },
+        {
+          "week": 11,
+          "opponent": "NYJ",
+          "home": true,
+          "team_score": 24,
+          "opp_score": 27,
+          "result": "L"
         }
       ]
     }
@@ -1260,7 +1348,8 @@
     7,
     8,
     9,
-    10
+    10,
+    11
   ],
   "weekly_counts_left": [
     4,
@@ -1272,7 +1361,8 @@
     4,
     3,
     7,
-    4
+    4,
+    5
   ],
   "weekly_counts_right": [
     4,
@@ -1284,7 +1374,8 @@
     1,
     3,
     3,
-    4
+    4,
+    3
   ],
   "cumulative_left": [
     4,
@@ -1296,7 +1387,8 @@
     28,
     31,
     38,
-    42
+    42,
+    47
   ],
   "cumulative_right": [
     4,
@@ -1308,6 +1400,7 @@
     23,
     26,
     29,
-    33
+    33,
+    36
   ]
 }
